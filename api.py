@@ -12,4 +12,5 @@ def home():
     depths = calc.calculate_depth(data)
     return jsonify(depths)
 
-app.run()
+if __name__ == '__main__':
+    app.run()
