@@ -29,7 +29,7 @@ def find_zeros(l, minmax, depth=1):
 
 def calculate_depth(l):
     if not isinstance(l, list):
-        return ["null", "null"]
+        return [None, None]
     
     found = find_zeros(l, MinMax())
-    return [found._min or "null", found._max or "null"]
+    return [found._min, found._max]
