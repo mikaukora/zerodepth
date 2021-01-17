@@ -6,11 +6,12 @@ app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 
-@app.route('/', methods=['POST'])
+@app.route("/", methods=["POST"])
 def home():
     data = request.json
     depths = calc.calculate_depth(data)
     return jsonify(depths)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run()
