@@ -1,23 +1,28 @@
 class MinMax:
-    """ Keeps minimum and maximum of added values. """
+    """ Provides minimum and maximum of added values. """
 
-    def __init__(self, min_value=None, max_value=None):
-        self._min = min_value
-        self._max = max_value
+    def __init__(self):
+        self.values = set()
 
     def add(self, value):
-        if self._min is None:
-            self._min = value
-        else:
-            self._min = min(self._min, value)
+        self.values.add(value)
 
-        if self._max is None:
-            self._max = value
-        else:
-            self._max = max(self._max, value)
+    @property
+    def min(self):
+        if self.values:
+            return min(self.values)
+        return None
+
+    @property
+    def max(self):
+        if self.values:
+            return max(self.values)
+        return None
 
 
 def find_zeros(l, minmax, depth=1):
+    """ Recursively search for occurrences of 0 and store depth. """
+
     for i in l:
         if isinstance(i, list):
             find_zeros(i, minmax, depth + 1)
@@ -32,4 +37,4 @@ def calculate_depth(l):
         return [None, None]
 
     found = find_zeros(l, MinMax())
-    return [found._min, found._max]
+    return [found.min, found.max]
